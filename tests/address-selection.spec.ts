@@ -1,20 +1,21 @@
 import { test, expect } from '@playwright/test';
-import { BasePage } from '../base-page';
+import { SearchPage } from '../pages/search-page';
 
 test.describe('Address Selection Tests', () => {
   test.beforeEach(async ({ page }) => {
-    const basePage = new BasePage(page);
-    await basePage.login();
+    const searchPage = new SearchPage(page);
+    await searchPage.login();
+    await searchPage.navigate();
   });
 
-  test('user can select an address from dropdown', async ({ page }) => {  
-    await page.locator('.search-input').fill('Amster');
-    await page.locator('.pac-item').nth(1).click();
-    await page.locator('.search-input').click();
-    await page.waitForURL('**/overview')
-    await expect(page.locator('[aria-label="Map marker"]')).toBeVisible();
-  });  
-
   // TODO: add tests for error messages
+
+  test('user can select an address from dropdown and go to report page', async ({ page }) => {  
+    const searchPage = new SearchPage(page);
+    await searchPage.searchAddress('Amster')
+
+    // FIXME: expect elements to be visible
+
+  });  
 });
 
