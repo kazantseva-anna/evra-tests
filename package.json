@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "pw:test": "USER_NAME=evraqamanual@test.wd.com PASSWORD=Zxcvbn@123 npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
