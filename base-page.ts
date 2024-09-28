@@ -8,11 +8,15 @@ export class BasePage {
   
   constructor(page: Page) {
     this.page = page
-    this.URL = ''
+  }
+
+  async navigate(url: string, loadState: 'load' | 'domcontentloaded' | 'networkidle' = 'networkidle'): Promise<void> {
+    await this.page.goto(url)
+    await this.page.waitForLoadState(loadState)
   }
 
   // TODO: login through api instead of UI
-  async login (userCredentials = ['evraqamanual@test.wd.com', 'Zxcvbn@123']) {
+  async login (userCredentials = ['evraqamanual@test.wd.com', 'Zxcvbn@123']): Promise<void> {
     await this.page.goto('');
     await this.page.waitForLoadState();
   
@@ -28,6 +32,7 @@ export class BasePage {
   
     await this.page.locator('[data-se="o-form-input-credentials.passcode"] input').fill(userCredentials[1]);
     await this.page.locator('.button').getByText('Verify').click();
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForURL('**/search')
+    //await this.page.waitForLoadState('networkidle');
   }
 }
