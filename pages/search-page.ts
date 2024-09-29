@@ -13,7 +13,7 @@ export class SearchPage extends BasePage {
   async searchAddress(address: string) {
     await this.page.locator('.search-input').fill(address);
     await this.page.locator('.pac-item').nth(1).click();
-    await this.page.locator('.search-input').click();
-    await this.page.waitForURL('**/overview');
+    //await this.page.locator('.search-input').click();
+    //await this.page.waitForURL('**/overview');
   }
 }

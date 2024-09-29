@@ -6,7 +6,6 @@ import path from 'path';
 const envKind = process.env.ENV ?? 'QA';
 dotenv.config({
   path: path.resolve(__dirname, `.env.${envKind}`),
-  override: true,
 });
 
 /**
@@ -25,14 +24,13 @@ export default defineConfig({
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Retry failing tests */
-  retries: 2,
+  //retries: 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    //baseURL: process.env.BASE_URL,
-    baseURL: 'https://evra.geophy.com',
+    baseURL: process.env.BASE_URL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
     testIdAttribute: 'data-test',

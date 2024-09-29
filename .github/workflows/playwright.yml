@@ -17,9 +17,11 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Set env
-        run: echo "ENV=QA" >> $GITHUB_ENV
       - name: Run Playwright tests
+        env:
+          BASE_URL: https://evra.geophy.com
+          USER_NAME: evraqamanual@test.wd.com
+          PASSWORD: Zxcvbn@123
         run: npm test
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
