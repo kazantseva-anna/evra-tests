@@ -14,6 +14,7 @@ test.describe('Address Selection Tests', () => {
     page,
   }) => {
     const searchPage = new SearchPage(page);
+    await expect(page).toHaveScreenshot('searchPage.png');
     await searchPage.searchAddress('Amster');
 
     const propertyMapPage = new PropertyMapPage(page);

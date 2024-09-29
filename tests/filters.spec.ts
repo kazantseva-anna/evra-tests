@@ -6,6 +6,7 @@ test.describe('Filters Tests', () => {
     const propertyMapPage = new PropertyMapPage(page);
     await propertyMapPage.login();
     await propertyMapPage.navigate('load');
+    await expect(page).toHaveScreenshot('propertyMapPage.png');
   });
 
   test('applying filters updates list of properties', async ({ page }) => {
