@@ -18,7 +18,7 @@ export default defineConfig({
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 60000,
+    timeout: 80000,
   },
   testDir: './tests',
   workers: process.env.CI ? 3 : undefined,

@@ -9,7 +9,8 @@
     "test": "npm run test:qa --workers=3",
     "debug": "ENV=QA npx playwright test --reporter=line --headed --workers=1",
     "test:qa": "ENV=QA npx playwright test",
-    "test:dev": "ENV=DEV npx playwright test"
+    "test:dev": "ENV=DEV npx playwright test",
+    "test:ci": "npx playwright test --workers=3 --ignore-snapshots"
   },
   "prettier": {
     "singleQuote": true

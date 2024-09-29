@@ -19,7 +19,7 @@ test.describe('Address Selection Tests', () => {
     await searchPage.addressItem.nth(1).click();
     await expect(searchPage.addressItem).not.toBeVisible();
 
-    // edit selected address should show dropdown
+    // dropdown should be shown when user starts changing address
     await searchPage.searchField.click();
     await page.waitForLoadState('networkidle');
     await searchPage.searchField.pressSequentially('ee');

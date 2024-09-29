@@ -37,14 +37,14 @@ Debugging via Visual Studio Code is the recommended way to debug your tests.
 
 The project supports test execution on multiple environments with the following commands:
 
-- `npm run test:qa` - the actual environment from the assignment
-- `npm run test:dev` - example of the command for another environment
+- `npm run test:qa` - the actual environment from the assignment description
+- `npm run test:dev` - just an example of another environment
 
-The environment details are managed with `.env` files located in the project root. They contain baseURL and user credentials. [More Info](https://www.npmjs.com/package/dotenv).
+The environment details are managed in `.env` files located in the project root. They contain baseURL and user credentials. [More Info](https://www.npmjs.com/package/dotenv)
 
 Adding more test environments can be done easily by created another `.env` file and adding command to `package.json`.
 
-## Test execution in multiple multiple browsers / devices / screen resolutions
+## Test execution in multiple browsers / devices / screen resolutions
 
 By default all the tests are executed in desktop Chrome.
 You can change the setup in `playwright.config.js`. Just uncomment the desired browser or viewport (including mobiles) in `projects` array.
@@ -54,19 +54,11 @@ You can change the setup in `playwright.config.js`. Just uncomment the desired b
 The test credentials are managed in `.env` files.
 Test case specific credentials can be provided as params of `login()` method in tests themselves.
 
-## Snapshot Tests
+## Snapshot Testing
 
-The tests contains screenshot assertions. [More Info](https://playwright.dev/docs/test-snapshots)
+The tests contains snapshot validation. [More Info](https://playwright.dev/docs/test-snapshots)
 
-Potentially, it can cause test failures if your local environment significantely differs the mine. For example, basic elements can be slightly different in the same browser, but in different OS versions.
-
-If you face this problem, follow the steps:
-
-1. Remove existing screenshots from `/tests` directory.
-2. Run all the tests. New screenshots should be generated now. The tests will fail since screenshot assertions could not be performed, this is expected.
-3. Run all the tests again. Now they should pass.
-
-Normally, it should not be the case since you do not want to compare screenshots done in different setups. The proper way to do it would be to check screenshots regularly in CI pipeline within the same container. (Or spinning the same container locally if it is really needed.)
+These assertions are ignored in the pipeline for now since it would require more work (to save images as artifacts and share them between the jobs).
 
 ## Code formater
 
