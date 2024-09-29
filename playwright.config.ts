@@ -21,6 +21,7 @@ export default defineConfig({
     timeout: 60000,
   },
   testDir: './tests',
+  workers: process.env.CI ? 3 : undefined,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Retry failing tests */

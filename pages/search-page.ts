@@ -4,16 +4,15 @@ import { BasePage } from './base-page';
 export class SearchPage extends BasePage {
   protected page: Page;
   protected URL = '/search';
+  public searchField: Locator;
+  public addressItem: Locator;
+  public searchError: Locator;
 
   constructor(page: Page) {
     super(page);
     this.page = page;
-  }
-
-  async searchAddress(address: string) {
-    await this.page.locator('.search-input').fill(address);
-    await this.page.locator('.pac-item').nth(1).click();
-    //await this.page.locator('.search-input').click();
-    //await this.page.waitForURL('**/overview');
+    this.searchField = page.locator('.search-input');
+    this.addressItem = page.locator('.pac-item');
+    this.searchError = page.getByTestId('span-search-error');
   }
 }

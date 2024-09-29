@@ -10,8 +10,6 @@ export class PropertyMapPage extends BasePage {
   public maxYearBuiltFilter: Locator;
   public yearBuiltIncludeUnknownCheckbox: Locator;
   public ratingAPlusBtn: Locator;
-  public overviewModules: Locator;
-  public interactiveMapPanel: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -27,8 +25,6 @@ export class PropertyMapPage extends BasePage {
       'YearBuilt-include-unknown',
     );
     this.ratingAPlusBtn = page.getByTestId('A+');
-    this.overviewModules = page.getByTestId('overview-module');
-    this.interactiveMapPanel = page.locator('#neighborhood-map-report-panel');
   }
 
   // TODO: pass filters dynamically as params

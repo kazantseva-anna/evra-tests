@@ -6,13 +6,12 @@ test.describe('Filters Tests', () => {
     const propertyMapPage = new PropertyMapPage(page);
     await propertyMapPage.login();
     await propertyMapPage.navigate('load');
-    //await expect(page).toHaveScreenshot('propertyMapPage.png');
+    await expect(page).toHaveScreenshot('propertyMapPage.png');
   });
 
   test('applying filters updates list of properties', async ({ page }) => {
     // check initial state
-    const propertyMapPage = new PropertyMapPage(page); // FIXME: do not create it twice
-    // FIXME: get amount of properties with regex: '(277 Properties)'.match(/\(([0-9]+)/)[1]
+    const propertyMapPage = new PropertyMapPage(page);
     await expect(propertyMapPage.totalResultsStr).toContainText(
       '(500+ Properties)',
     );
@@ -24,6 +23,6 @@ test.describe('Filters Tests', () => {
     await expect(propertyMapPage.totalResultsStr).not.toContainText('500+');
     await expect(propertyMapPage.firstAddressStr).not.toContainText(
       firstAddress,
-    ); // FIXME: TS complains
+    );
   });
 });
