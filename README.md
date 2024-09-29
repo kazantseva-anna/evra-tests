@@ -18,6 +18,7 @@ This is a test framework for EVRA application. It is implemented using Playwrigh
 If you're using VSCode, the easiest way to run the tests is by installing the official Playwright extension, and pressing the ▶️ button next to the title of the test.
 
 To see the detailed report, run the following command:
+
 - `npx playwright show-report`
 
 This will serve the complete report, including traces, with your default browser.
@@ -35,6 +36,7 @@ Debugging via Visual Studio Code is the recommended way to debug your tests.
 ## Test execution in multiple environments
 
 The project supports test execution on multiple environments with the following commands:
+
 - `npm run test:qa` - the actual environment from the assignment
 - `npm run test:dev` - example of the command for another environment
 
@@ -65,3 +67,10 @@ If you face this problem, follow the steps:
 3. Run all the tests again. Now they should pass.
 
 Normally, it should not be the case since you do not want to compare screenshots done in different setups. The proper way to do it would be to check screenshots regularly in CI pipeline within the same container. (Or spinning the same container locally if it is really needed.)
+
+## Code formater
+
+The following commands can be used to format the code in the repo:
+
+- `npm run prettier` - to check if there are any issues in the files
+- `npm run fix` - fixes the format issues

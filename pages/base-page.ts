@@ -17,8 +17,10 @@ export class BasePage {
 
   // TODO: login through api instead of UI
   async login(
-    login = process.env.USER_NAME,
-    password = process.env.PASSWORD,
+    //login = process.env.USER_NAME,
+    //password = process.env.PASSWORD,
+    login = 'evraqamanual@test.wd.com',
+    password = 'Zxcvbn@123'
   ): Promise<void> {
     await this.page.goto('');
     await this.page.waitForLoadState();

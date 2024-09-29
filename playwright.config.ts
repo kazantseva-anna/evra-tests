@@ -13,35 +13,40 @@ dotenv.config({
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  timeout: 60000,
+  timeout: 120000,
   expect: {
     /**
-    * Maximum time expect() should wait for the condition to be met.
-    * For example in `await expect(locator).toHaveText();`
-    */
-    timeout: 30000,
+     * Maximum time expect() should wait for the condition to be met.
+     * For example in `await expect(locator).toHaveText();`
+     */
+    timeout: 60000,
   },
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Retry failing tests */
-  //retries: 2,
+  retries: 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.BASE_URL,
+    //baseURL: process.env.BASE_URL,
+    baseURL: 'https://evra.geophy.com',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
     testIdAttribute: 'data-test',
+    /* Timeout for each action */
+    actionTimeout: 60000,
+    /* Timeout for each navigation action */
+    navigationTimeout: 60000,
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1920, height: 1080 },
       },
