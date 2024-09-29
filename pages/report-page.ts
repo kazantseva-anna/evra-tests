@@ -3,7 +3,10 @@ import { BasePage } from './base-page';
 
 export class ReportPage extends BasePage {
   protected page: Page;
-  protected URL = '/report/2281af07-7ab5-40f3-8bea-360bf5db1836/overview'; // TODO: make URL dynamic based on the environment
+  // TODO: I've noticed that property id may change sometime.  
+  // I would like to check with the team why it happens and if there is a way
+  // to land on the report directly instead of searching for the property in UI
+  protected URL = 'report/1cc0b35d-8eab-4778-839d-d461e78e9c57/overview'; 
   public mapMarker: Locator;
   public neighborhoodRatingsPopup: Locator;
   public neighborhoodStatisticsPopup: Locator;

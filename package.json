@@ -7,6 +7,7 @@
     "fix": "npx prettier . --write",
     "prettier": "npx prettier . --check",
     "test": "npm run test:qa",
+    "debug": "ENV=QA npx playwright test --reporter=line --headed --workers=1",
     "test:qa": "ENV=QA npx playwright test",
     "test:dev": "ENV=DEV npx playwright test"
   },
