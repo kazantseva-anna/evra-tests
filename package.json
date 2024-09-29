@@ -4,13 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pw:test": "USER_NAME=evraqamanual@test.wd.com PASSWORD=Zxcvbn@123 npx playwright test"
+    "fix": "npx prettier . --write",
+    "prettier": "npx prettier . --check",
+    "test": "npm run test:qa",
+    "test:qa": "ENV=QA npx playwright test",
+    "test:dev": "ENV=DEV npx playwright test"
+  },
+  "prettier": {
+    "singleQuote": true
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.47.2",
-    "@types/node": "^22.7.4"
+    "@types/node": "^22.7.4",
+    "dotenv": "^16.4.5",
+    "prettier": "^3.3.3"
   }
 }

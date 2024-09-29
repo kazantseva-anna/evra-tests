@@ -10,13 +10,14 @@ test.describe('Address Selection Tests', () => {
   });
 
   // TODO: add tests for error messages
-  test('user can select an address from dropdown and go to report page', async ({ page }) => {  
+  test('user can select an address from dropdown and go to report page', async ({
+    page,
+  }) => {
     const searchPage = new SearchPage(page);
-    await searchPage.searchAddress('Amster')
+    await searchPage.searchAddress('Amster');
 
     const propertyMapPage = new PropertyMapPage(page);
     expect(propertyMapPage.overviewModules).toBeVisible();
     expect(propertyMapPage.interactiveMapPanel).toBeVisible();
-  });  
+  });
 });
-

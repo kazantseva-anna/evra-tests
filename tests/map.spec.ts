@@ -9,7 +9,7 @@ test.describe('Map Tests', () => {
   });
 
   // TODO: Check with stakeholders the most common user scenarion on the map
-  test('user can interact with a map', async ({ page }) => {  
+  test('user can interact with a map', async ({ page }) => {
     const reportPage = new ReportPage(page);
     await expect(reportPage.mapMarker).toBeVisible();
     await reportPage.mapMarker.click();
@@ -19,15 +19,15 @@ test.describe('Map Tests', () => {
     await reportPage.housingCategory.click();
     await expect(reportPage.neighborhoodRatingsPopup).not.toBeVisible();
     await expect(reportPage.housingScoreSublayer).not.toBeVisible();
-    await reportPage.housingCategoriesPointer.click(); 
+    await reportPage.housingCategoriesPointer.click();
     await expect(reportPage.housingScoreSublayer).toBeVisible();
 
     // interact with statistics popup
     await reportPage.mapMarker.click();
-    await expect(reportPage.neighborhoodStatisticsPopup).toContainText('Housing')
+    await expect(reportPage.neighborhoodStatisticsPopup).toContainText(
+      'Housing',
+    );
     await reportPage.closePopupBtn.click();
     await expect(reportPage.neighborhoodStatisticsPopup).not.toBeVisible();
-  });  
-
+  });
 });
-
