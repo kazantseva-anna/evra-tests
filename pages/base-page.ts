@@ -14,7 +14,7 @@ export class BasePage {
   }
 
   // TODO: login through api instead of UI
-  async login (): Promise<void> {
+  async login (login = process.env.USER_NAME, password = process.env.PASSWORD): Promise<void> {
     await this.page.goto('');
     await this.page.waitForLoadState();
     await expect(this.page.getByTestId('login-button')).toBeVisible();
@@ -25,13 +25,14 @@ export class BasePage {
     await this.page.reload();
     await this.page.getByTestId('login-button').click();
   
-    // Login
-    if (!process.env.USER_NAME) { process.env.USER_NAME = 'evraqamanual@test.wd.com' }
-    if (!process.env.PASSWORD) { process.env.PASSWORD = 'Zxcvbn@123' }
+    // Default credentials
+    if (!login) { login = 'evraqamanual@test.wd.com' }
+    if (!password) {  password = 'Zxcvbn@123' }
 
-    await this.page.locator('[data-se="o-form-input-identifier"] input').fill(process.env.USER_NAME);
+    // Login
+    await this.page.locator('[data-se="o-form-input-identifier"] input').fill(login);
     await this.page.locator('.button').getByText('Next').click();
-    await this.page.locator('[data-se="o-form-input-credentials.passcode"] input').fill(process.env.PASSWORD);
+    await this.page.locator('[data-se="o-form-input-credentials.passcode"] input').fill(password);
     await this.page.locator('.button').getByText('Verify').click();
     await this.page.waitForURL('**/search')
   }

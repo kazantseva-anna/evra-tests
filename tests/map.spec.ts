@@ -10,20 +10,23 @@ test.describe('Map Tests', () => {
 
   // TODO: Check with stakeholders the most common user scenarion on the map
   test('user can interact with a map', async ({ page }) => {  
-    await expect(page.locator('[aria-label="Map marker"]')).toBeVisible();
-    
-    await page.locator('[aria-label="Map marker"]').click();
-    await expect(page.getByTestId('neighborhood-popup-ratings')).toBeVisible();
+    const reportPage = new ReportPage(page);
+    await expect(reportPage.mapMarker).toBeVisible();
+    await reportPage.mapMarker.click();
+    await expect(reportPage.neighborhoodRatingsPopup).toBeVisible();
 
-    await page.getByTestId('Housing').click();
-    await expect(page.getByTestId('neighborhood-popup-ratings')).not.toBeVisible();
-    await expect(page.getByTestId('sublayer-HousingScore')).not.toBeVisible();
-    await page.getByTestId('map-layer-categories').locator('.cursor-pointer').nth(2).click(); // TODO: add a proper data-test attribute to droprdown buttons
+    // interact with categories section
+    await reportPage.housingCategory.click();
+    await expect(reportPage.neighborhoodRatingsPopup).not.toBeVisible();
+    await expect(reportPage.housingScoreSublayer).not.toBeVisible();
+    await reportPage.housingCategoriesPointer.click(); 
+    await expect(reportPage.housingScoreSublayer).toBeVisible();
 
-    await page.locator('[aria-label="Map marker"]').click();
-    await expect(page.getByTestId('sublayer-HousingScore')).toBeVisible();
-    await page.locator('[aria-label="Close popup"]').first().click();
-    await expect(page.getByTestId('neighborhood-popup-ratings')).not.toBeVisible();
+    // interact with statistics popup
+    await reportPage.mapMarker.click();
+    await expect(reportPage.neighborhoodStatisticsPopup).toContainText('Housing')
+    await reportPage.closePopupBtn.click();
+    await expect(reportPage.neighborhoodStatisticsPopup).not.toBeVisible();
   });  
 
 });
