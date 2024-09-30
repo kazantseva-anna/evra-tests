@@ -1,0 +1,27 @@
+{
+  "name": "evra-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "fix": "npx prettier . --write",
+    "prettier": "npx prettier . --check",
+    "test": "npm run test:qa --workers=3",
+    "debug": "ENV=QA npx playwright test --reporter=line --headed --workers=1",
+    "test:qa": "ENV=QA npx playwright test",
+    "test:dev": "ENV=DEV npx playwright test",
+    "test:ci": "npx playwright test --workers=3 --ignore-snapshots"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.47.2",
+    "@types/node": "^22.7.4",
+    "dotenv": "^16.4.5",
+    "prettier": "^3.3.3"
+  }
+}
